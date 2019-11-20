@@ -39,7 +39,7 @@ class skate_rental:
             print('Sorry! We have currently {} boards available to rent.').format(self.stock)
         else:
             now = datetime.datetime.now()
-            print('You have rented {} board(s) on a weekly basis today at {} weeks.'.format(n,now.hour))
+            print('You have rented {} board(s) on a weekly basis today at {} hours.'.format(n,now.hour))
             print('You will be charged $80 for each week per bike.')
             print('We hope you do some sick tricks!')
             self.stock -= n
