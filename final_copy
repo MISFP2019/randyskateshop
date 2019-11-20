@@ -1,4 +1,93 @@
 import datetime
 
-class skate_rental
-can you guys read this
+class skate_rental:
+    def __init__(self, stock = 0):
+        self.stock = stock
+    def display_stock(self):
+        print(f"We have {self.stock} boards available to rent!")
+        return self.stock
+    def rent_hourly(self, n):
+        if n <= 0: 
+            print("The number of bikes should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print("You have rented {} bike(S) on an hourly basis today at {} hours.".format(n, now.hour))
+            print("You will be charged $5 for each hour per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+        
+    def rent_daily(self, n):
+        if n <= 0: 
+            print("The number of bikes should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print("You have rented {} board(s) on an daily basis today for {} days.".format(n, now.day))
+            print("You will be charged $24 for each day per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+    
+    def rent_weekly(self, n):
+        if n <= 0:
+            print('The number of boards should be positive')
+        elif n > self.stock:
+            print('Sorry! We have currently {} boards available to rent.').format(self.stock)
+        else:
+            now = datetime.datetime.now()
+            print('You have rented {} board(s) on a weekly basis today at {} weeks.'.format(n,now.hour))
+            print('You will be charged $80 for each week per bike.')
+            print('We hope you do some sick tricks!')
+            self.stock -= n
+            return now
+    def return_bike(self, request):
+        rental_time, rental_basis, num_boards = request
+        Bill = 0
+        if rental_time and rental_basis and num_boards:
+            self.stock += num_bikes
+            now = datetime.datetime.now()
+            rental_period = now - rental_time
+        if rental_basis == 1:
+            bill = round(rental_period.seconds/3600) * 6 * num_boards
+        elif rental_basis == 2:
+            bill = round(rental_period.days/7) * 24 * num_boards
+        elif rental_basis == 3:
+            bill = round(rental_period.days/7) * 80 * num_boards
+        elif 6 <= num_boards <= 8:
+            print('You are eligible for the Skate Squad Rental discount of 20%')
+            bill *= .8
+            print('Thanks for returning your board. We hope you have a good time!')
+            print(f'That will be ${bill}')
+            return bill
+        else:
+            print('Are you sure you rented a board from us?')
+
+class customer:
+    def __init__(self):
+        self.boards = 0
+        self.rental_basis = 0
+        self.rental_time = 0
+        self.bill = 0
+    def request_board(self):
+        boards = input('How many boards would you like to rent?')
+        try:
+            boards = int(boards)
+        except ValueError:
+            print('That’s not a positive integer.')
+            return -1
+        if boards < 1:
+            print('Invalid input. Number of boards should be positive')
+            return -1
+        else:
+            self.boards = boards
+        return self.boards
+    
+    def return_board(self):
+        if self.rental_basis and self.rental_time and self.boards:
+            return self.rental_time, self. Rental_basis, self.boards
+        else:
+            return 0, 0, 0
