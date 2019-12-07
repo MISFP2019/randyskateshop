@@ -1,19 +1,19 @@
 import datetime
 
-class skate_rental:
-    def __init__(self, stock = 0):
+class skate_flames_rental:
+    def __init__(self, stock = 10):
         self.stock = stock
     def display_stock(self):
-        print(f"We have {self.stock} boards available to rent!")
+        print(f"We have {self.stock} boards with the flame design available to rent!")
         return self.stock
     def rent_hourly(self, n):
         if n <= 0: 
-            print("The number of bikes should be positive!")
+            print("The number of boards should be positive!")
         elif n > self.stock:
             print(f"Sorry we only have {self.stock} boards available to rent!")
         else:
             now = datetime.datetime.now()
-            print("You have rented {} bike(S) on an hourly basis today at {} hours.".format(n, now.hour))
+            print("You have rented {} board(s) on an hourly basis.").format(n)
             print("You will be charged $5 for each hour per board.")
             print("We hope that you do some sick tricks!")
             self.stock -= n 
@@ -21,7 +21,133 @@ class skate_rental:
         
     def rent_daily(self, n):
         if n <= 0: 
-            print("The number of bikes should be positive!")
+            print("The number of boards should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print("You have rented {} board(s) on an daily basis.").format(n)
+            print("You will be charged $24 for each day per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+    
+    def rent_weekly(self, n):
+        if n <= 0:
+            print('The number of boards should be positive')
+        elif n > self.stock:
+            print('Sorry! We have currently {} boards available to rent.').format(self.stock)
+        else:
+            now = datetime.datetime.now()
+            print('You have rented {} board(s) on a weekly basis.').format(n)
+            print('You will be charged $80 for each week per board.')
+            print('We hope you do some sick tricks!')
+            self.stock -= n
+            return now
+    def return_board(self, time, num_boards, rental_basis):
+        if rental_basis == "hours":
+            bill = time * 6 * num_boards
+            return bill
+        elif rental_basis == "days":
+            bill = time * 24 * num_boards
+            return bill
+        elif rental_basis == "weeks":
+            bill = time * 80 * num_boards
+            return bill
+        elif 6 <= num_boards <= 8:
+            print('You are eligible for the Skate Squad Rental discount of 20%')
+            bill *= .8
+            print('Thanks for returning your board. We hope you have a good time!')
+            print(f'That will be ${bill}')
+            return bill
+        else:
+            print('Are you sure you rented a board from us?')
+
+class skate_checkers_rental:
+    def __init__(self, stock = 10):
+        self.stock = stock
+    def display_stock(self):
+        print(f"We have {self.stock} boards with the checkers design available to rent!")
+        return self.stock
+    def rent_hourly(self, n):
+        if n <= 0: 
+            print("The number of boards should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print("You have rented {} board(s) on an hourly basis").format(n)
+            print("You will be charged $5 for each hour per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+        
+    def rent_daily(self, n):
+        if n <= 0: 
+            print("The number of boards should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print("You have rented {} board(s) on an daily basis").format(n)
+            print("You will be charged $24 for each day per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+    
+    def rent_weekly(self, n):
+        if n <= 0:
+            print('The number of boards should be positive')
+        elif n > self.stock:
+            print('Sorry! We have currently {} boards available to rent.').format(self.stock)
+        else:
+            now = datetime.datetime.now()
+            print('You have rented {} board(s) on a weekly basis.').format(n)
+            print('You will be charged $80 for each week per board.')
+            print('We hope you do some sick tricks!')
+            self.stock -= n
+            return now
+    def return_board(self, time, num_boards, rental_basis):
+        if rental_basis == "hours":
+            bill = time * 6 * num_boards
+            return bill
+        elif rental_basis == "days":
+            bill = time * 24 * num_boards
+            return bill
+        elif rental_basis == "weeks":
+            bill = time * 80 * num_boards
+            return bill
+        elif 6 <= num_boards <= 8:
+            print('You are eligible for the Skate Squad Rental discount of 20%')
+            bill *= .8
+            print('Thanks for returning your board. We hope you have a good time!')
+            print(f'That will be ${bill}')
+            return bill
+        else:
+            print('Are you sure you rented a board from us?')
+
+class skate_basic_rental:
+    def __init__(self, stock = 10):
+        self.stock = stock
+    def display_stock(self):
+        print(f"We have {self.stock} boards with the basic color-block design available to rent!")
+        return self.stock
+    def rent_hourly(self, n):
+        if n <= 0: 
+            print("The number of boards should be positive!")
+        elif n > self.stock:
+            print(f"Sorry we only have {self.stock} boards available to rent!")
+        else:
+            now = datetime.datetime.now()
+            print(f"You have rented {n} board(s) on an hourly basis.")
+            print("You will be charged $5 for each hour per board.")
+            print("We hope that you do some sick tricks!")
+            self.stock -= n 
+            return now
+        
+    def rent_daily(self, n):
+        if n <= 0: 
+            print("The number of boards should be positive!")
         elif n > self.stock:
             print(f"Sorry we only have {self.stock} boards available to rent!")
         else:
@@ -39,32 +165,26 @@ class skate_rental:
             print('Sorry! We have currently {} boards available to rent.').format(self.stock)
         else:
             now = datetime.datetime.now()
-            print('You have rented {} board(s) on a weekly basis today at {} hours.'.format(n,now.hour))
-            print('You will be charged $80 for each week per bike.')
+            print('You have rented {} board(s) on a weekly basis.').format(n)
+            print('You will be charged $80 for each week per board.')
             print('We hope you do some sick tricks!')
             self.stock -= n
             return now
-    def return_bike(self, request):
-        rental_time, rental_basis, num_boards = request
-        Bill = 0
-        if rental_time and rental_basis and num_boards:
-            self.stock += num_bikes
-            now = datetime.datetime.now()
-            rental_period = now - rental_time
-        if rental_basis == 1:
-            bill = round(rental_period.seconds/3600) * 6 * num_boards
-        elif rental_basis == 2:
-            bill = round(rental_period.days/7) * 24 * num_boards
-        elif rental_basis == 3:
-            bill = round(rental_period.days/7) * 80 * num_boards
+    def return_board(self, time, num_boards, rental_basis):
+        self.stock += num_boards
+        if rental_basis == "hours":
+            bill = time * 6 * num_boards
+        elif rental_basis == "days":
+            bill = time * 24 * num_boards
+        elif rental_basis == "weeks":
+            bill = time * 80 * num_boards
         elif 6 <= num_boards <= 8:
             print('You are eligible for the Skate Squad Rental discount of 20%')
             bill *= .8
             print('Thanks for returning your board. We hope you have a good time!')
-            print(f'That will be ${bill}')
-            return bill
         else:
             print('Are you sure you rented a board from us?')
+        print(f'That will be ${bill}')
 
 class customer:
     def __init__(self):
@@ -73,7 +193,7 @@ class customer:
         self.rental_time = 0
         self.bill = 0
     def request_board(self):
-        boards = input('How many boards would you like to rent?')
+        boards = input('How many boards would you like to rent?: ')
         try:
             boards = int(boards)
         except ValueError:
@@ -86,8 +206,120 @@ class customer:
             self.boards = boards
         return self.boards
     
-    def return_board(self):
-        if self.rental_basis and self.rental_time and self.boards:
-            return self.rental_time, self. Rental_basis, self.boards
-        else:
-            return 0, 0, 0
+    
+        
+print("Hi, welcome to Randy's Skate Shop! Home of Venice's Sickest Boards!")
+order_type = input("Are you returning or renting?: ")
+order_directory = {}
+if order_type == "returning":
+    num_boards = int(input("How many boards are you returning?: "))
+    design = input('What kind of board(s) are you returning?: ')
+    rental_basis = input("On what cycle did you rent? Hours, days, or weeks?: ")
+    time = int(input(f"How many {rental_basis}?: "))
+    if design == "flames":
+        f = skate_flames_rental()
+        f.return_board(time, num_boards, rental_basis)
+        next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+        if next_step == "rent":
+            order_type = "renting"
+    if design == "checkers":
+        checker = skate_checkers_rental()
+        checker.return_board(time, num_boards, rental_basis)
+        next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+        if next_step == "rent":
+            order_type = "renting"
+    if design == "basic":
+        b = skate_basic_rental()
+        b.return_board(time, num_boards, rental_basis)
+        next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+        if next_step == "rent":
+            order_type = "renting"
+
+if order_type == "renting":
+    name = input('What is the name on your rental?: ')
+    order_num = 1
+    order_directory[name] = {order_num}
+    time = input('How long would you like to rent a board from us for? Type hourly, daily, or weekly: ')
+    design = input('What kind of board are you going to shred? We have decks painted with flames, checkers, or basic (block colors random)?: ')
+    order = 'x'
+    while order != 'stop':
+        if design == 'flames':
+            c = customer()
+            f = skate_flames_rental()
+            f.display_stock()
+            boards = c.request_board()
+            if time == "hourly":
+                f.rent_hourly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "daily":
+                f.rent_daily(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "weekly":
+                f.rent_weekly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+        if design == 'checkers':
+            c = customer()
+            checkers = skate_checkers_rental()
+            checkers.display_stock()
+            boards = c.request_board()
+            if time == "hourly":
+                checkers.rent_hourly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "daily":
+                checkers.rent_daily(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "weekly":
+                checkers.rent_weekly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+        if design == 'basic':
+            c = customer()
+            b = skate_basic_rental()
+            b.display_stock()
+            boards = c.request_board()
+            if time == "hourly":
+                b.rent_hourly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "daily":
+                b.rent_daily(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+            if time == "weekly":
+                b.rent_weekly(boards)
+                next_step = input("Can we help you with anything else? Type \"rent\" to rent another board or \"stop\" to complete your order: ")
+                if next_step == "rent":
+                    continue 
+                if next_step == "stop":
+                    break
+
+print("Thanks for coming to Randy's Skate Shop! Come back and skate with us again soon!")
